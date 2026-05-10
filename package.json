@@ -1,10 +1,15 @@
 {
   "name": "catering-service-management-system",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Catering Service Management System API",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "check": "node --check server.js && node --check routes/authRoutes.js && node --check routes/bookingRoutes.js && node --check routes/inventoryRoutes.js && node --check routes/menuRoutes.js && node --check routes/vendorRoutes.js && node --check routes/adminRoutes.js && node --check routes/staffRoutes.js && node --check routes/customerRoutes.js && node --check routes/reportRoutes.js && node --check routes/settingRoutes.js",
+    "seed:admin": "node scripts/seedAdmin.js",
+    "seed:accounts": "node scripts/seedAdmin.js",
+    "seed:menu": "node scripts/seedMenu.js"
   },
   "keywords": [],
   "author": "",
