@@ -8,7 +8,11 @@ const modulesByRole = {
     customer: ['Dashboard', 'Book Service', 'My Bookings', 'Menu'],
     staff: ['Bookings', 'Book Service', 'Schedule'],
     admin: ['Dashboard', 'Bookings', 'Book Service', 'Users', 'Menu', 'Inventory', 'Vendors', 'Reports', 'Audit Logs', 'Settings'],
+<<<<<<< HEAD
     vendor: ['Vendor Profile', 'Menu']
+=======
+    vendor: ['Vendor Profile']
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 };
 
 const pathModules = {
@@ -18,8 +22,12 @@ const pathModules = {
     '/inventory': 'Inventory',
     '/vendors': 'Vendors',
     '/reports': 'Reports',
+<<<<<<< HEAD
     '/settings': 'Settings',
     '/setting': 'Settings'
+=======
+    '/settings': 'Settings'
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 };
 
 const authView = document.getElementById('authView');
@@ -160,6 +168,7 @@ async function renderCustomerDashboard() {
     `;
 }
 
+<<<<<<< HEAD
 async function renderBookingForm() {
     const menuItems = await api('/api/menu');
     const menuOptions = menuItems.map((item) => `
@@ -168,6 +177,9 @@ async function renderBookingForm() {
         </option>
     `).join('');
 
+=======
+function renderBookingForm() {
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
     moduleContent.innerHTML = `
         <div class="module-title">Book Catering Service</div>
         <form id="bookingForm" class="work-panel">
@@ -194,6 +206,7 @@ async function renderBookingForm() {
                     <label class="form-label">Guests</label>
                     <input class="form-control" name="guests" type="number" min="1" required>
                 </div>
+<<<<<<< HEAD
                 <div class="col-md-8">
                     <label class="form-label">Menu package</label>
                     <select class="form-select" id="menuItemSelect" name="menuItemId" required>
@@ -205,6 +218,11 @@ async function renderBookingForm() {
                 <div class="col-md-4">
                     <label class="form-label">Estimated total</label>
                     <input class="form-control" id="estimatedTotal" name="totalAmount" readonly value="0.00">
+=======
+                <div class="col-md-6">
+                    <label class="form-label">Package</label>
+                    <input class="form-control" name="packageName">
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
                 </div>
                 <div class="col-12">
                     <label class="form-label">Special requests</label>
@@ -214,8 +232,11 @@ async function renderBookingForm() {
             <button class="btn btn-primary mt-3" type="submit">Submit Booking</button>
         </form>
     `;
+<<<<<<< HEAD
 
     updateBookingEstimate();
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 }
 
 async function renderBookings() {
@@ -270,10 +291,16 @@ async function renderBookings() {
         <div class="module-title">Bookings</div>
         ${customerTools}
         ${staffTools}
+<<<<<<< HEAD
         ${table(['ID', 'Date', 'Menu', 'Venue', 'Guests', 'Status', 'Cancel Request', 'Billing', 'Amount'], bookings.map((booking) => [
             booking.id,
             booking.eventDate,
             booking.menuItem?.name || booking.packageName || '',
+=======
+        ${table(['ID', 'Date', 'Venue', 'Guests', 'Status', 'Cancel Request', 'Billing', 'Amount'], bookings.map((booking) => [
+            booking.id,
+            booking.eventDate,
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
             booking.venue,
             booking.guests,
             booking.status,
@@ -337,6 +364,7 @@ async function renderInventory() {
 
 async function renderVendors() {
     const vendors = await api('/api/vendors');
+<<<<<<< HEAD
     const form = state.user.role === 'admin' ? `
         <form id="vendorForm" class="work-panel mb-3">
             <div class="row g-3">
@@ -369,6 +397,10 @@ async function renderVendors() {
     moduleContent.innerHTML = `
         <div class="module-title">Vendors</div>
         ${form}
+=======
+    moduleContent.innerHTML = `
+        <div class="module-title">Vendors</div>
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
         ${table(['Company', 'Contact', 'Email', 'Phone', 'Status'], vendors.map((vendor) => [
             vendor.companyName,
             vendor.contactPerson,
@@ -396,11 +428,18 @@ async function renderSchedule() {
     const bookings = await api('/api/schedule');
     moduleContent.innerHTML = `
         <div class="module-title">Schedule</div>
+<<<<<<< HEAD
         ${table(['Date', 'Time', 'Customer', 'Menu', 'Venue', 'Guests', 'Status'], bookings.map((booking) => [
             booking.eventDate,
             booking.eventTime || '',
             booking.customer?.name || '',
             booking.menuItem?.name || booking.packageName || '',
+=======
+        ${table(['Date', 'Time', 'Customer', 'Venue', 'Guests', 'Status'], bookings.map((booking) => [
+            booking.eventDate,
+            booking.eventTime || '',
+            booking.customer?.name || '',
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
             booking.venue,
             booking.guests,
             booking.status
@@ -509,6 +548,7 @@ function formDataToObject(form) {
     return Object.fromEntries(new FormData(form).entries());
 }
 
+<<<<<<< HEAD
 function updateBookingEstimate() {
     const form = document.getElementById('bookingForm');
     if (!form) return;
@@ -530,6 +570,8 @@ function updateBookingEstimate() {
     }
 }
 
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
     event.preventDefault();
     try {
@@ -594,7 +636,10 @@ moduleContent.addEventListener('submit', async (event) => {
             await api(`/api/bookings/${bookingId}/billing`, { method: 'PATCH', body: JSON.stringify(payload) });
         }
         if (form.id === 'menuForm') await api('/api/menu', { method: 'POST', body: JSON.stringify(payload) });
+<<<<<<< HEAD
         if (form.id === 'vendorForm') await api('/api/vendors', { method: 'POST', body: JSON.stringify(payload) });
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
         if (form.id === 'inventoryForm') await api('/api/inventory', { method: 'POST', body: JSON.stringify(payload) });
         if (form.id === 'settingsForm') await api(`/api/settings/${encodeURIComponent(payload.key)}`, { method: 'PUT', body: JSON.stringify({ value: payload.value }) });
         if (form.id === 'vendorProfileForm') {
@@ -612,6 +657,7 @@ moduleContent.addEventListener('submit', async (event) => {
     }
 });
 
+<<<<<<< HEAD
 moduleContent.addEventListener('input', (event) => {
     if (event.target.closest('#bookingForm')) {
         updateBookingEstimate();
@@ -624,6 +670,8 @@ moduleContent.addEventListener('change', (event) => {
     }
 });
 
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 logoutButton.addEventListener('click', clearSession);
 
 render();

@@ -1,6 +1,10 @@
 const bcrypt = require('bcryptjs');
 const dotenv = require('dotenv');
+<<<<<<< HEAD
 const { sequelize, User, Vendor } = require('../models');
+=======
+const { sequelize, User } = require('../models');
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 
 dotenv.config();
 
@@ -42,12 +46,15 @@ async function seedAccounts() {
             email: process.env.CUSTOMER_EMAIL || 'customer@catering.local',
             password: process.env.CUSTOMER_PASSWORD || 'Customer12345!',
             role: 'customer'
+<<<<<<< HEAD
         },
         {
             name: process.env.VENDOR_NAME || 'Sample Vendor',
             email: process.env.VENDOR_EMAIL || 'vendor@catering.local',
             password: process.env.VENDOR_PASSWORD || 'Vendor12345!',
             role: 'vendor'
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
         }
     ];
 
@@ -58,6 +65,7 @@ async function seedAccounts() {
         await seedUser(account);
     }
 
+<<<<<<< HEAD
     const vendorUser = await User.findOne({
         where: { email: process.env.VENDOR_EMAIL || 'vendor@catering.local' }
     });
@@ -82,6 +90,10 @@ async function seedAccounts() {
 
     console.log('Default accounts are ready.');
     console.log('Set ADMIN_*, STAFF_*, CUSTOMER_*, and VENDOR_* variables in .env to customize these accounts.');
+=======
+    console.log('Default accounts are ready.');
+    console.log('Set ADMIN_*, STAFF_*, and CUSTOMER_* variables in .env to customize these accounts.');
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
     await sequelize.close();
 }
 

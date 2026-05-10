@@ -49,7 +49,10 @@ app.use('/api/staff', staffRoutes);
 app.use('/api/customer', customerRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/settings', settingRoutes);
+<<<<<<< HEAD
 app.use('/api/setting', settingRoutes);
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 app.use('/api/schedule', staffRoutes);
 
 app.get(/^\/(?!api).*/, (req, res) => {

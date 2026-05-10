@@ -27,9 +27,12 @@ const Booking = sequelize.define('Booking', {
     packageName: {
         type: DataTypes.STRING
     },
+<<<<<<< HEAD
     menuItemId: {
         type: DataTypes.INTEGER
     },
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
     specialRequests: {
         type: DataTypes.TEXT
     },

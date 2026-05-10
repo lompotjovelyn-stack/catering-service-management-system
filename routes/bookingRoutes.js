@@ -1,6 +1,10 @@
 const express = require('express');
 const { Op } = require('sequelize');
+<<<<<<< HEAD
 const { Booking, User, MenuItem } = require('../models');
+=======
+const { Booking, User } = require('../models');
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 const { authenticate, authorize } = require('../middleware/auth');
 const logAction = require('../utils/audit');
 
@@ -45,8 +49,12 @@ router.get('/', authenticate, async (req, res) => {
             where,
             include: [
                 { model: User, as: 'customer', attributes: ['id', 'name', 'email', 'phone'] },
+<<<<<<< HEAD
                 { model: User, as: 'assignedStaff', attributes: ['id', 'name', 'email', 'phone'] },
                 { model: MenuItem, as: 'menuItem' }
+=======
+                { model: User, as: 'assignedStaff', attributes: ['id', 'name', 'email', 'phone'] }
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
             ],
             order: [['eventDate', 'ASC']]
         });
@@ -63,6 +71,7 @@ router.post('/', authenticate, authorize('customer', 'staff', 'admin'), async (r
             return res.status(400).json({ message: 'customerId is required when staff or admin creates a booking' });
         }
 
+<<<<<<< HEAD
         const selectedMenu = req.body.menuItemId
             ? await MenuItem.findByPk(req.body.menuItemId)
             : null;
@@ -80,6 +89,10 @@ router.post('/', authenticate, authorize('customer', 'staff', 'admin'), async (r
             ...req.body,
             packageName: selectedMenu ? selectedMenu.name : req.body.packageName,
             totalAmount: estimatedTotal,
+=======
+        const payload = {
+            ...req.body,
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
             customerId: req.user.role === 'customer' ? req.user.id : req.body.customerId
         };
 
@@ -97,8 +110,12 @@ router.get('/:id', authenticate, async (req, res) => {
         const booking = await Booking.findByPk(req.params.id, {
             include: [
                 { model: User, as: 'customer', attributes: ['id', 'name', 'email', 'phone'] },
+<<<<<<< HEAD
                 { model: User, as: 'assignedStaff', attributes: ['id', 'name', 'email', 'phone'] },
                 { model: MenuItem, as: 'menuItem' }
+=======
+                { model: User, as: 'assignedStaff', attributes: ['id', 'name', 'email', 'phone'] }
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
             ]
         });
 
@@ -131,7 +148,11 @@ router.put('/:id', authenticate, async (req, res) => {
             return res.status(403).json({ message: 'You cannot update this booking' });
         }
 
+<<<<<<< HEAD
         const orderFields = ['eventDate', 'eventTime', 'venue', 'guests', 'packageName', 'menuItemId', 'specialRequests'];
+=======
+        const orderFields = ['eventDate', 'eventTime', 'venue', 'guests', 'packageName', 'specialRequests'];
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
         const staffFields = [...orderFields, 'status', 'adminNotes', 'assignedStaffId', 'totalAmount', 'billingStatus', 'billingNotes'];
         const adminFields = [...staffFields, 'customerId'];
         const allowedFields = isAdmin ? adminFields : staffFields;

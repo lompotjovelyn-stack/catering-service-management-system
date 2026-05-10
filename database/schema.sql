@@ -21,7 +21,10 @@ CREATE TABLE IF NOT EXISTS bookings (
     venue VARCHAR(255) NOT NULL,
     guests INT NOT NULL,
     packageName VARCHAR(255),
+<<<<<<< HEAD
     menuItemId INT,
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
     specialRequests TEXT,
     status ENUM('pending', 'approved', 'rejected', 'cancelled', 'completed') DEFAULT 'pending',
     cancellationStatus ENUM('none', 'requested', 'approved', 'rejected') DEFAULT 'none',
@@ -37,7 +40,10 @@ CREATE TABLE IF NOT EXISTS bookings (
     updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_bookings_customer FOREIGN KEY (customerId) REFERENCES users(id),
     CONSTRAINT fk_bookings_staff FOREIGN KEY (assignedStaffId) REFERENCES users(id),
+<<<<<<< HEAD
     CONSTRAINT fk_bookings_menu_item FOREIGN KEY (menuItemId) REFERENCES menu_items(id),
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
     CONSTRAINT fk_bookings_cancel_reviewer FOREIGN KEY (cancellationReviewedBy) REFERENCES users(id)
 );
 

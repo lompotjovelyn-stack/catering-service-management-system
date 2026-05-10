@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # catering-service-management-system
 =======
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 # Catering Service Management System
 
 Node.js, Express, MySQL, Sequelize, JWT, and bcrypt backend for a catering service management system.
@@ -116,4 +119,7 @@ Authorization: Bearer YOUR_JWT_TOKEN
 6. Deploy.
 
 `render.yaml` is included if you prefer Render Blueprint setup.
+<<<<<<< HEAD
 >>>>>>> 6018720 (first)
+=======
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809

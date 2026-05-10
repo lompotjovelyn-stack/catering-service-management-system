@@ -1,5 +1,9 @@
 const express = require('express');
+<<<<<<< HEAD
 const { Booking, InventoryItem, User, MenuItem } = require('../models');
+=======
+const { Booking, InventoryItem, User } = require('../models');
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 const { authenticate, authorize } = require('../middleware/auth');
 
 const router = express.Router();
@@ -11,8 +15,12 @@ async function getSchedule(req, res) {
         const bookings = await Booking.findAll({
             include: [
                 { model: User, as: 'customer', attributes: ['id', 'name', 'email', 'phone'] },
+<<<<<<< HEAD
                 { model: User, as: 'assignedStaff', attributes: ['id', 'name', 'email', 'phone'] },
                 { model: MenuItem, as: 'menuItem' }
+=======
+                { model: User, as: 'assignedStaff', attributes: ['id', 'name', 'email', 'phone'] }
+>>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
             ],
             order: [['eventDate', 'ASC'], ['eventTime', 'ASC']]
         });
