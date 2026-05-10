@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: catering-service-management-system
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_SYNC_ALTER
+        value: false
+      - key: DB_SSL
+        value: true
+      - key: JWT_SECRET
+        sync: false
+      - key: DATABASE_URL
+        sync: false
