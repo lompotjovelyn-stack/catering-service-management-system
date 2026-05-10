@@ -13,12 +13,9 @@ Booking.belongsTo(User, { foreignKey: 'customerId', as: 'customer' });
 User.hasMany(Booking, { foreignKey: 'assignedStaffId', as: 'assignedBookings' });
 Booking.belongsTo(User, { foreignKey: 'assignedStaffId', as: 'assignedStaff' });
 
-<<<<<<< HEAD
 MenuItem.hasMany(Booking, { foreignKey: 'menuItemId', as: 'bookings' });
 Booking.belongsTo(MenuItem, { foreignKey: 'menuItemId', as: 'menuItem' });
 
-=======
->>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
 User.hasOne(Vendor, { foreignKey: 'userId', as: 'vendorProfile' });
 Vendor.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 

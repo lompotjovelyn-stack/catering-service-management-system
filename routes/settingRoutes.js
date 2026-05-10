@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.use(authenticate, authorize('admin'));
 
-<<<<<<< HEAD
 const defaultSettings = [
     { key: 'business_name', value: 'Catering Service Management System' },
     { key: 'contact_email', value: 'admin@catering.local' },
@@ -28,10 +27,6 @@ async function ensureDefaultSettings() {
 router.get('/', async (req, res) => {
     try {
         await ensureDefaultSettings();
-=======
-router.get('/', async (req, res) => {
-    try {
->>>>>>> 60187203880473657c5c68fd6f3b891b6218e809
         const settings = await SystemSetting.findAll({ order: [['key', 'ASC']] });
         res.json(settings);
     } catch (error) {
